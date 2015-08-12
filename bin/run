@@ -1,7 +1,10 @@
 #!/usr/bin/env node
-require('babel/register');
 
 /** Setup Environment **/
+if (!process.env.NO_BABEL_HOOK) {
+  require('babel/register');
+}
+
 if (typeof process.env.DEBUG === 'undefined') {
   process.env.DEBUG = 'gen,gen:*';
 }
