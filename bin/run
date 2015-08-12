@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+require('babel/register');
+
+/** Setup Environment **/
+if (typeof process.env.DEBUG === 'undefined') {
+  process.env.DEBUG = 'gen,gen:*';
+}
+
+/** Load Configuration File **/
+var fs = require('fs');
+var path = require('path');
+
+var config;
+var configPath = path.join(__dirname, '..', 'config.json');
+
+if (!fs.existsSync(configPath)) {
+  config = {
+    sourcesPath: 'sources',
+    oldPackageThreshold: 604800,
+    mongo: 'mongodb://127.0.0.1:21707/gsdb'
+  };
+
+  fs.writeFileSync(configPath, JSON.stringify(config));
+} else {
+  try {
+    config = JSON.parse(fs.readFileSync(configPath));
+  } catch (err) {
+    console.log('Failed to load configuration file: ' + configPath);
+    throw err;
+  }
+}
+
+console.log('Loaded configuration: ' + configPath);
+
+/** Run **/
+var generator = new (require('../lib/Generator'))(config);
+
+generator.run(function (err) {
+  if (err) throw err;
+});

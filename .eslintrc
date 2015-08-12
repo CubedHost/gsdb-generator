@@ -1,0 +1,24 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "quotes": [2, "single"],
+    "strict": [2, "never"],
+    "camelcase": 0,
+    "no-multi-spaces": 0,
+    "no-alert": 0,
+    "key-spacing": 0,
+    "curly": 0,
+    "no-octal-escape": 0,
+    "no-use-before-define": 0,
+    "new-cap": 0,
+    "no-shadow": 0,
+    "no-underscore-dangle": 0,
+    "no-unused-vars": [ 2, { "vars": "all", "args": "none" } ]
+  },
+  "ecmaFeatures": {
+    "modules": true
+  }
+}

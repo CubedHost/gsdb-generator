@@ -1,0 +1,33 @@
+[
+  {
+    "_id": "minecraft",
+    "name": "Minecraft",
+    "type": "static",
+    "url": "https://s3.amazonaws.com/Minecraft.Download/versions/versions.json",
+    "format": "json",
+    "origin": "https://s3.amazonaws.com/Minecraft.Download/versions/{VERSION}/minecraft_server.{VERSION}.jar",
+    "ignore": [ "alpha", "beta" ]
+  },
+  {
+    "_id": "atlauncher",
+    "name": "ATLauncher",
+    "url": "https://api.atlauncher.com/v1/",
+    "key": "API_KEY_GOES_HERE",
+    "format": "json",
+    "ignore": [ "VanillaMinecraft" ]
+  },
+  {
+    "_id": "ftb",
+    "name": "FeedTheBeast",
+    "url": "http://ftb.cursecdn.com/FTB2/",
+    "format": "xml",
+    "type": "static",
+    "origin": "http://ftb.cursecdn.com/FTB2/modpacks/{DIR}/{VERSION}/{FILENAME}"
+  },
+  {
+    "_id": "technic",
+    "name": "Technic",
+    "url": "http://solder.technicpack.net/api/modpack",
+    "format": "json"
+  }
+]
