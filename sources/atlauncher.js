@@ -16,7 +16,7 @@ class ATLauncherSource extends BaseSource {
   }
 
   request(path, callback) {
-    var options = {
+    let options = {
       headers: { 'API-KEY': this.key }
     };
 
@@ -30,20 +30,20 @@ class ATLauncherSource extends BaseSource {
     }
 
     data = data.data;
-    var packs = [];
+    let packs = [];
 
     data.forEach((originalPack) => {
       if (this.ignoredPackages.indexOf(originalPack.safeName) !== -1) return;
 
-      var id = originalPack.safeName;
+      let id = originalPack.safeName;
       id = 'atlauncher-' + id.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
-      var pattern = 'atl(?:auncher)?-';
+      let pattern = 'atl(?:auncher)?-';
       pattern += id.replace(/^atlauncher-/, '');
       pattern += '(?:[.-]([\\d.]+))?\\.jar';
       pattern = new RegExp(pattern);
 
-      var pack = {
+      let pack = {
         _id: id,
         name: originalPack.name,
         visibility: originalPack.type,
