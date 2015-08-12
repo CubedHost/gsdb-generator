@@ -1,2 +1,7 @@
 import Generator from 'lib/Generator';
-export default Generator;
+import BaseSource from 'lib/BaseSource';
+
+export default {
+  BaseSource,
+  Generator
+};
