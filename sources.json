@@ -28,6 +28,7 @@
     "_id": "technic",
     "name": "Technic",
     "url": "http://solder.technicpack.net/api/modpack",
+    "type": "static",
     "format": "json"
   }
 ]
