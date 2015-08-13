@@ -8,7 +8,6 @@ class ATLauncherSource extends BaseSource {
   constructor(name, url, options) {
     super(name, url, options);
     this.key = options.key;
-    this.ignoredPackages = options.ignore || [ ];
   }
 
   fetch(callback) {
@@ -33,7 +32,10 @@ class ATLauncherSource extends BaseSource {
     let packs = [];
 
     data.forEach((originalPack) => {
-      if (this.ignoredPackages.indexOf(originalPack.safeName) !== -1) return;
+      if (this.ignoredPackages.indexOf(originalPack.safeName) !== -1) {
+        log('Skipping ignored package: %s', originalPack.safeName);
+        return;
+      }
 
       let id = originalPack.safeName;
       id = 'atlauncher-' + id.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();

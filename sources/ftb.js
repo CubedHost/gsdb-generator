@@ -3,11 +3,6 @@ import BaseSource from '../lib/BaseSource';
 
 const log = debug('gen:source:feedthebeast');
 
-const IGNORE = [
-  'Direwolf20',
-  'Direwolf20_1_5_2'
-];
-
 class FeedTheBeastSource extends BaseSource {
 
   constructor(name, url, options) {
@@ -31,7 +26,10 @@ class FeedTheBeastSource extends BaseSource {
     data.modpacks.modpack.forEach((originalPack) => {
         originalPack = originalPack.$;
 
-        if (IGNORE.indexOf(originalPack.dir) !== -1) return;
+        if (this.ignoredPackages.indexOf(originalPack.dir) !== -1) {
+          log('Skipping ignored package: %s', originalPack.dir);
+          return;
+        }
 
         // Skip if no server download exists
         if (typeof originalPack.serverPack === 'undefined' ||

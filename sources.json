@@ -29,6 +29,7 @@
     "name": "Technic",
     "url": "http://solder.technicpack.net/api/modpack",
     "type": "static",
-    "format": "json"
+    "format": "json",
+    "ignore": [ "vanilla" ]
   }
 ]

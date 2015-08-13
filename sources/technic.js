@@ -21,7 +21,6 @@ class TechnicSource extends BaseSource {
 
   constructor(name, url, options) {
     super(name, url, options);
-    this.ignoredPackages = options.ignore || [ ];
   }
 
   fetch(callback) {
