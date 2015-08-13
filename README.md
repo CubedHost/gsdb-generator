@@ -18,7 +18,7 @@ $ npm install
 #### Setup your environment
 First, edit `sources.json` to match your needs, then run the following, replacing the MongoDB URI with your own. This will remove existing sources and import the data from sources.json into MongoDB.
 ```bash
-$ ./bin/importSources mongodb://127.0.0.1:37071 sources.json
+$ ./bin/importSources mongodb://127.0.0.1:37071/gsdb sources.json
 ```
 
 ## CLI Usage
