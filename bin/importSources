@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var path = require('path');
+var mongodb = require('mongodb');
+
+var args = process.argv.slice(2);
+if (args.length !== 2) {
+  usage();
+  process.exit(1);
+}
+
+var uri = args[0];
+var sourcesPath = path.resolve(args[1]);
+var sources = loadSourcesFile(sourcesPath);
+
+insertData(uri, sources, function (err) {
+  if (err) throw err;
+});
+
+///
+
+function usage() {
+  console.log('Usage: ./bin/importSources <mongodb-uri> <sources.json>');
+}
+
+function loadSourcesFile(path) {
+  var sources = JSON.parse(fs.readFileSync(path));
+
+  sources = sources.map(function (source) {
+    if (typeof source._id === 'undefined') {
+      source._id = source.id;
+      delete source.id;
+    }
+
+    return source;
+  });
+
+  return sources;
+}
+
+function insertData(uri, data, callback) {
+  mongodb.connect(uri, function (err, db) {
+    if (err) return callback(err);
+
+    console.log('Connected to MongoDB');
+
+    var sourcesCollection = db.collection('sources');
+
+    sourcesCollection.drop(function (err) {
+      if (err && err.message !== 'ns not found') {
+        return callback(err);
+      }
+
+      sourcesCollection.insert(data, function (err) {
+        if (err) return callback(err);
+
+        console.log(sources.length + ' sources imported!');
+
+        db.close();
+        callback();
+      });
+    });
+  });
+}
