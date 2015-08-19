@@ -52,7 +52,10 @@ class ATLauncherSource extends BaseSource {
         source: this.id,
         versions: [],
         version: originalPack.versions[0].version,
-        pattern: pattern
+        pattern: pattern,
+        metadata: {
+          id: originalPack.safeName
+        }
       };
 
       originalPack.versions.forEach(
