@@ -1,7 +1,7 @@
 import BaseSource from '../lib/BaseSource';
 
 const RELEASE_PATTERN = /minecraft(?:_server)?(?:\.([\d.]+))?\.jar/;
-const SNAPSHOT_PATTERN = /minecraft(?:_(?:server|snapshot))?(?:\.([\w.]+))?\.jar/;
+const SNAPSHOT_PATTERN = /minecraft_(server(?:\.[0-9]+w[0-9]+\w)|snapshot(?:\.[0-9]+w[0-9]+\w)?)\.jar/;
 
 class MinecraftSource extends BaseSource {
 
