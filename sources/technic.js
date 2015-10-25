@@ -13,8 +13,9 @@ const SERVER_MAPPINGS = {
                'hexxit': 'hexxit/Hexxit_Server_v',
                 'voltz': 'voltz/Voltz_Server_v',
            'tekkitlite': 'tekkitlite/Tekkit_Lite_Server_',
-           'blightfall': 'Blightfall_Server_v',
-                 'tppi': 'TPPIServer-v'
+           'blightfall': 'blightfall/Blightfall_Server_v',
+                 'tppi': 'tppi/TPPIServer-v',
+       'tekkit-legends': 'tekkit-legends/Tekkit_Legends_Server_v'
 };
 
 class TechnicSource extends BaseSource {
