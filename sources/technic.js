@@ -70,7 +70,7 @@ class TechnicSource extends BaseSource {
         .toLowerCase()
         .replace(/tekkitmain$/, 'tekkit');
 
-      let pattern = `^{this.id}-{id}(?:[.-]([\\d.]+))?\\.jar$`;
+      let pattern = `^${this.id}-${id}(?:[.-]([\\d.]+))?\\.jar$`;
       pattern = new RegExp(pattern);
 
       let origin = url.resolve(mirrorUrl, serverPath) + '{VERSION}.zip';
