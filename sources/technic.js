@@ -6,16 +6,16 @@ import BaseSource from '../lib/BaseSource';
 const log = debug('gen:source:technic');
 
 const SERVER_MAPPINGS = {
-  'attack-of-the-bteam': 'bteam/BTeam_Server_v',
-           'tekkitmain': 'tekkitmain/Tekkit_Server_v',
-               'tekkit': 'tekkit/Tekkit_Server_',
-               'bigdig': 'bigdig/BigDigServer-v',
-               'hexxit': 'hexxit/Hexxit_Server_v',
-                'voltz': 'voltz/Voltz_Server_v',
-           'tekkitlite': 'tekkitlite/Tekkit_Lite_Server_',
-           'blightfall': 'blightfall/Blightfall_Server_v',
-                 'tppi': 'tppi/TPPIServer-v',
-       'tekkit-legends': 'tekkit-legends/Tekkit_Legends_Server_v'
+  'attack-of-the-bteam': 'servers/bteam/BTeam_Server_v',
+           'tekkitmain': 'servers/tekkitmain/Tekkit_Server_v',
+               'tekkit': 'servers/tekkit/Tekkit_Server_',
+               'bigdig': 'servers/bigdig/BigDigServer-v',
+               'hexxit': 'servers/hexxit/Hexxit_Server_v',
+                'voltz': 'servers/voltz/Voltz_Server_v',
+           'tekkitlite': 'servers/tekkitlite/Tekkit_Lite_Server_',
+           'blightfall': 'servers/blightfall/Blightfall_Server_v',
+                 'tppi': 'servers/tppi/TPPIServer-v',
+       'tekkit-legends': 'servers/tekkit-legends/Tekkit_Legends_Server_v'
 };
 
 class TechnicSource extends BaseSource {
