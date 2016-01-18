@@ -18,7 +18,6 @@ var configPath = path.join(__dirname, '..', 'config.json');
 
 if (!fs.existsSync(configPath)) {
   config = {
-    sourcesPath: 'sources',
     oldPackageThreshold: 604800,
     mongo: 'mongodb://127.0.0.1:21707/gsdb'
   };
