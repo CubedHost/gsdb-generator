@@ -36,7 +36,7 @@ if (!fs.existsSync(configPath)) {
 console.log('Loaded configuration: ' + configPath);
 
 /** Run **/
-var generator = new (require('../lib/Generator')['default'])(config);
+var generator = new (require('../lib/generator')['default'])(config);
 
 generator.run(function (err) {
   if (err) throw err;
