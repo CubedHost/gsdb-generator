@@ -1,7 +1,7 @@
-import Generator from 'lib/Generator';
-import BaseSource from 'lib/BaseSource';
+import Generator from 'lib/generator';
+import Source from 'lib/sources/base';
 
 export default {
-  BaseSource,
+  Source,
   Generator
 };
