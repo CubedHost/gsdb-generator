@@ -22,7 +22,8 @@
     "url": "http://ftb.cursecdn.com/FTB2/",
     "format": "xml",
     "type": "static",
-    "origin": "http://ftb.cursecdn.com/FTB2/modpacks/{DIR}/{VERSION}/{FILENAME}"
+    "format": "xml",
+    "origin": "http://ftb.cursecdn.com/FTB2/modpacks/{DIR}/{FTBVERSION}/{FILENAME}"
   },
   {
     "_id": "technic",
