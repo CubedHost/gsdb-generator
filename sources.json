@@ -6,7 +6,11 @@
     "url": "https://s3.amazonaws.com/Minecraft.Download/versions/versions.json",
     "format": "json",
     "origin": "https://s3.amazonaws.com/Minecraft.Download/versions/{VERSION}/minecraft_server.{VERSION}.jar",
-    "ignore": [ "alpha", "beta" ]
+    "downloadType": "jar",
+    "ignore": [
+      "alpha",
+      "beta"
+    ]
   },
   {
     "_id": "atlauncher",
@@ -14,16 +18,24 @@
     "url": "https://api.atlauncher.com/v1/",
     "key": "API_KEY_GOES_HERE",
     "format": "json",
-    "ignore": [ "VanillaMinecraft" ]
+    "downloadType": "zip",
+    "ignore": [
+      "VanillaMinecraft",
+      "VanillaMinecraftAlphaBeta"
+    ]
   },
   {
     "_id": "ftb",
     "name": "FeedTheBeast",
     "url": "http://ftb.cursecdn.com/FTB2/",
-    "format": "xml",
     "type": "static",
     "format": "xml",
-    "origin": "http://ftb.cursecdn.com/FTB2/modpacks/{DIR}/{FTBVERSION}/{FILENAME}"
+    "origin": "http://ftb.cursecdn.com/FTB2/modpacks/{DIR}/{FTBVERSION}/{FILENAME}",
+    "downloadType": "zip",
+    "ignore": [
+      "Direwolf20",
+      "Direwolf20_1_5_2"
+    ]
   },
   {
     "_id": "technic",
@@ -31,6 +43,16 @@
     "url": "http://solder.technicpack.net/api/modpack",
     "type": "static",
     "format": "json",
-    "ignore": [ "vanilla" ]
+    "downloadType": "zip",
+    "ignore": [
+      "vanilla"
+    ]
+  },
+  {
+    "_id": "spigot",
+    "name": "Spigot",
+    "url": "https://hub.spigotmc.org/versions/",
+    "format": "index",
+    "downloadType": "jar"
   }
 ]
