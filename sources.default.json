@@ -56,6 +56,13 @@
     "downloadType": "jar"
   },
   {
+    "_id": "craftbukkit",
+    "name": "CraftBukkit",
+    "url": "https://hub.spigotmc.org/versions/",
+    "format": "index",
+    "downloadType": "jar"
+  },
+  {
     "_id": "paperspigot",
     "name": "PaperSpigot",
     "url": "https://ci.destroystokyo.com/userContent/paperversions/",
