@@ -6,20 +6,22 @@ Builds a database of Minecraft server software from various customizable sources
 - ATLauncher
 - FTB
 - Technic (main packs)
+- Spigot
+- Bukkit (via Spigot Hub)
+- PaperSpigot (via Spigot Hub)
 
 #### Planned
 - Forge
-- VoidsWrath
-- SpigotMC (Jenkins)
 - Pixelmon
+- VoidsWrath (maybe)
 
 _Open an issue if you want to see others added._
 
 ## Dependencies
-- Node.js/io.js
+- Node.js
 - MongoDB
 
-This project takes advantage of ES2015 syntax and uses Babel to transpile the source at runtime. If you're using a runetime that supports this syntax natively, you can use `export NO_BABEL_HOOK=1` to prevent it from utilizing Babel.
+This project takes advantage of ES2015 syntax and uses Babel to transpile the source at runtime. If you're using a runtime that supports this syntax natively, you can use `export NO_BABEL_HOOK=1` to prevent it from utilizing Babel.
 
 ## Setup
 #### Get the source
