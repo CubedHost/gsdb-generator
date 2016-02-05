@@ -68,5 +68,13 @@
     "url": "https://ci.destroystokyo.com/userContent/paperversions/",
     "format": "jenkinsFileList",
     "downloadType": "jar"
+  },
+  {
+    "_id": "forge",
+    "name": "Forge",
+    "url": "http://files.minecraftforge.net/maven/net/minecraftforge/forge/",
+    "origin": "http://files.minecraftforge.net/maven/net/minecraftforge/forge/{MCVERSION}-{VERSION}/forge-{MCVERSION}-{VERSION}-installer.jar",
+    "format": "json",
+    "downloadType": "jar"
   }
 ]

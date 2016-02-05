@@ -5,13 +5,14 @@ Builds a database of Minecraft server software from various customizable sources
 - Mojang (Release & Snapshots)
 - ATLauncher
 - FTB
-- Technic (main packs)
+- Technic (official modpacks)
+- Forge
 - Spigot
 - Bukkit (via Spigot Hub)
 - PaperSpigot (via Spigot Hub)
 
 #### Planned
-- Forge
+- Sponge
 - Pixelmon
 - VoidsWrath (maybe)
 
