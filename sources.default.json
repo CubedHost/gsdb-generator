@@ -30,7 +30,7 @@
     "url": "http://ftb.cursecdn.com/FTB2/",
     "type": "static",
     "format": "xml",
-    "origin": "http://ftb.cursecdn.com/FTB2/modpacks/{DIR}/{FTBVERSION}/{FILENAME}",
+    "origin": "http://ftb.cursecdn.com/FTB2/modpacks/{DIR}/{VERSION}/{FILENAME}",
     "downloadType": "zip",
     "ignore": [
       "Direwolf20",
