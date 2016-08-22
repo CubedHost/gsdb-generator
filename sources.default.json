@@ -63,10 +63,11 @@
     "downloadType": "jar"
   },
   {
-    "_id": "paperspigot",
-    "name": "PaperSpigot",
-    "url": "https://ci.destroystokyo.com/userContent/paperversions/",
-    "format": "jenkinsFileList",
+    "_id": "paper",
+    "name": "Paper",
+    "url": "https://ci.destroystokyo.com/job/PaperSpigot/",
+    "origin": "https://ci.destroystokyo.com/job/PaperSpigot/{VERSION}/artifact/{JAR}",
+    "format": "json",
     "downloadType": "jar"
   },
   {
