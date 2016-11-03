@@ -77,5 +77,13 @@
     "origin": "http://files.minecraftforge.net/maven/net/minecraftforge/forge/{MCVERSION}-{VERSION}/forge-{MCVERSION}-{VERSION}-installer.jar",
     "format": "json",
     "downloadType": "jar"
+  },
+  {
+    "_id": "curse",
+    "name": "Curse",
+    "url": "http://clientupdate.curse.com/feed/complete.xml.bz2",
+    "encoding": "bz2",
+    "format": "json",
+    "downloadType": "zip"
   }
 ]
