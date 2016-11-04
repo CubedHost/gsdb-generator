@@ -14,10 +14,16 @@
     "request": "^2.60.0",
     "xml2js": "^0.4.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "depcheck": "^0.6.4",
+    "eslint": "^3.9.1"
+  },
   "scripts": {
     "start": "node ./bin/run",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint && npm run depcheck",
+    "lint": "echo 'Linting...' && ./node_modules/.bin/eslint . && echo 'Success!'",
+    "depcheck": "echo 'Checking dependencies...' && DEP=$(./node_modules/.bin/depcheck --ignores=depcheck,babel-core,babel-register); echo \"$DEP\"; [ \"$DEP\" == 'No depcheck issue' ]"
   },
   "repository": {
     "type": "git",
