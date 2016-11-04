@@ -16,12 +16,14 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
+    "depcheck": "^0.6.4",
     "eslint": "^3.9.1"
   },
   "scripts": {
     "start": "node ./bin/run",
-    "test": "npm run lint",
-    "lint": "echo 'Linting...'; ./node_modules/.bin/eslint . && echo 'Success!'"
+    "test": "npm run lint && npm run depcheck",
+    "lint": "echo 'Linting...' && ./node_modules/.bin/eslint . && echo 'Success!'",
+    "depcheck": "echo 'Checking dependencies...' && DEP=$(./node_modules/.bin/depcheck --ignores=depcheck,babel-core,babel-register); echo \"$DEP\"; [ \"$DEP\" == 'No depcheck issue' ]"
   },
   "repository": {
     "type": "git",
