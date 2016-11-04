@@ -81,7 +81,7 @@
   {
     "_id": "curse",
     "name": "Curse",
-    "url": "http://clientupdate.curse.com/feed/complete.xml.bz2",
+    "url": "https://clientupdate-v6.cursecdn.com/feed/addons/432/v10/complete.json.bz2",
     "encoding": "bz2",
     "format": "json",
     "downloadType": "zip"
