@@ -10,6 +10,7 @@ Builds a database of Minecraft server software from various customizable sources
 - Spigot
 - Bukkit (via Spigot Hub)
 - Paper
+- Curse
 
 #### Planned
 - Sponge (Vanilla & Forge)
@@ -20,8 +21,6 @@ _Open an issue if you want to see others added._
 ## Dependencies
 - Node.js
 - MongoDB
-
-This project takes advantage of ES2015 syntax and uses Babel to transpile the source at runtime. If you're using a runtime that supports this syntax natively, you can use `export NO_BABEL_HOOK=1` to prevent it from utilizing Babel.
 
 ## Setup
 #### Get the source
@@ -38,8 +37,10 @@ $ ./bin/importSources mongodb://127.0.0.1:21707/gsdb sources.json
 ```
 
 ## CLI Usage
-The following command will scrape all sources, insert/update data in MongoDB, then "prune" old packages. This is designed to be run on a cron or schedule and usually finishes within 10 seconds.
 ```bash
+# The following command will scrape all sources, insert/update data in MongoDB,
+# then prune old packages. This is designed to be run on a cron or schedule and
+# usually finishes within 10 seconds.
 $ ./bin/run
 ```
 
