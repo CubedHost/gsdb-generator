@@ -12,6 +12,7 @@
     "babel-register": "^6.4.3",
     "cheerio": "^0.22.0",
     "debug": "^2.2.0",
+    "lodash": "^4.17.4",
     "md5": "^2.2.1",
     "mongodb": "^2.0.40",
     "request": "^2.60.0",
