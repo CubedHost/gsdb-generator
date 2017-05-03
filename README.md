@@ -11,6 +11,7 @@ Builds a database of Minecraft server software from various customizable sources
 - Bukkit (via Spigot Hub)
 - Paper
 - Curse
+- BungeeCord
 
 #### Planned
 - Sponge (Vanilla & Forge)

@@ -85,5 +85,13 @@
     "encoding": "bz2",
     "format": "json",
     "downloadType": "zip"
+  },
+  {
+    "_id": "bungeecord",
+    "name": "BungeeCord",
+    "url": "https://ci.md-5.net/job/bungeecord/",
+    "origin": "https://ci.md-5.net/job/bungeecord/{VERSION}/artifact/{JAR}",
+    "format": "json",
+    "downloadType": "jar"
   }
 ]
