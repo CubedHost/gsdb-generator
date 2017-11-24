@@ -15,7 +15,6 @@ Builds a database of Minecraft server software from various customizable sources
 
 #### Planned
 - Sponge (Vanilla & Forge)
-- Pixelmon
 
 _Open an issue if you want to see others added._
 
