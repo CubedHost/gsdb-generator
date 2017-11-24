@@ -15,8 +15,7 @@
   {
     "_id": "atlauncher",
     "name": "ATLauncher",
-    "url": "https://api.atlauncher.com/v1/",
-    "key": "API_KEY_GOES_HERE",
+    "url": "https://download.nodecdn.net/containers/atl/launcher/json/packs.json",
     "format": "json",
     "downloadType": "zip",
     "ignore": [
