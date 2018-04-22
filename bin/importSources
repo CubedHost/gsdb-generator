@@ -39,8 +39,12 @@ function loadSourcesFile(path) {
 }
 
 function insertData(uri, data, callback) {
-  mongodb.connect(uri, function (err, db) {
+  const databaseName = uri.split('/').pop();
+
+  mongodb.connect(uri, function (err, client) {
     if (err) return callback(err);
+
+    const db = client.db(databaseName);
 
     console.log('Connected to MongoDB');
 
@@ -56,7 +60,7 @@ function insertData(uri, data, callback) {
 
         console.log(sources.length + ' sources imported!');
 
-        db.close();
+        client.close();
         callback();
       });
     });
