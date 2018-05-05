@@ -39,7 +39,7 @@ function loadSourcesFile(path) {
 }
 
 function insertData(uri, data, callback) {
-  const databaseName = uri.split('/').pop();
+  const databaseName = uri.split('/').pop().split('?').shift();
 
   mongodb.connect(uri, function (err, client) {
     if (err) return callback(err);
