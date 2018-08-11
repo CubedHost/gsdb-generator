@@ -1,6 +1,6 @@
 {
   "name": "gsdb-generator",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "Builds a database of Minecraft game server software from various sources.",
   "main": "index.js",
   "dependencies": {
