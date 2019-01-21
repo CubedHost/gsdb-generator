@@ -13,6 +13,14 @@
     ]
   },
   {
+    "_id": "pocketmine",
+    "name": "PocketMine",
+    "game": "minecraft-pocketmine",
+    "repoOwner": "pmmp",
+    "repoName": "PocketMine-MP",
+    "downloadType": "phar"
+  },
+  {
     "_id": "atlauncher",
     "name": "ATLauncher",
     "url": "https://download.nodecdn.net/containers/atl/launcher/json/packs.json",

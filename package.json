@@ -4,6 +4,7 @@
   "description": "Builds a database of Minecraft game server software from various sources.",
   "main": "index.js",
   "dependencies": {
+    "@octokit/rest": "^16.11.0",
     "async": "^2.0.1",
     "aws-sdk": "^2.7.5",
     "babel-core": "^6.4.0",
