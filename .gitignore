@@ -1,4 +1,10 @@
 .DS_Store
 config.json
+sources.json
 node_modules/*
 data/*
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
