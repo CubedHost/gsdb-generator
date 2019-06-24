@@ -10,11 +10,11 @@ if (!process.env.NO_BABEL_HOOK) {
 }
 
 /** Load Configuration File **/
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var config;
-var configPath = path.join(__dirname, '..', 'config.json');
+let config;
+const configPath = path.join(__dirname, '..', 'config.json');
 
 if (!fs.existsSync(configPath)) {
   config = {
@@ -35,6 +35,6 @@ if (!fs.existsSync(configPath)) {
 console.log('Loaded configuration: ' + configPath);
 
 /** Run **/
-var generator = new (require('../lib/generator')['default'])(config);
+const generator = new (require('../lib/generator')['default'])(config);
 
 generator.run();
