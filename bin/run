@@ -6,7 +6,7 @@ if (typeof process.env.DEBUG === 'undefined') {
 
 /** Setup Environment **/
 if (!process.env.NO_BABEL_HOOK) {
-  require('babel-register');
+  require('@babel/register');
 }
 
 /** Load Configuration File **/
