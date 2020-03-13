@@ -17,15 +17,14 @@ let config;
 const configPath = path.join(__dirname, '..', 'config.json');
 
 if (!fs.existsSync(configPath)) {
-  config = {
-    oldPackageThreshold: 604800,
-    mongo: 'mongodb://127.0.0.1:21707/gsdb'
+  global.config = {
+    oldPackageThreshold: 604800
   };
 
-  fs.writeFileSync(configPath, JSON.stringify(config));
+  fs.writeFileSync(configPath, JSON.stringify(global.config));
 } else {
   try {
-    config = JSON.parse(fs.readFileSync(configPath));
+    global.config = JSON.parse(fs.readFileSync(configPath));
   } catch (err) {
     console.log('Failed to load configuration file: ' + configPath);
     throw err;
@@ -35,6 +34,6 @@ if (!fs.existsSync(configPath)) {
 console.log('Loaded configuration: ' + configPath);
 
 /** Run **/
-const generator = new (require('../lib/generator')['default'])(config);
+const generator = new (require('../src/generator')['default'])(global.config);
 
 generator.run();
