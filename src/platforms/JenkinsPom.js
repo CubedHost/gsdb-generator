@@ -69,10 +69,6 @@ export default class JenkinsPomPlatform extends Jenkins {
         };
       }
 
-          source_ref: gameVer.version
-        };
-      }
-
       try {
         const pkgEntry = this.packages[gameVer.id].versions.find(ep => `${ep.version}` === `${version.id}`);
         if (pkgEntry && pkgEntry.origin) continue;
