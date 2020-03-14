@@ -32,14 +32,14 @@ class ForgePlatform extends Platform {
           if (typeof packages[gameVersion.version] === 'undefined') {
             packages[gameVersion.version] = {
               versions: [],
-              name: gameVersion.version,
+              name: `${this.name} for Minecraft ${gameVersion.version}`,
+              slug: gameVersion.version,
               source_ref: gameVersion.version
             };
           }
 
           const pkg = {
             version: forgeVer[1],
-            slug: forgeVer[1],
             name: `${forgeVer[1]}`,
             game_version_id: gameVersion.id,
             package_id: this.id,
