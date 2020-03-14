@@ -74,7 +74,7 @@ class PaperPlatform extends JenkinsPlatform {
         } catch (err) {
           // Do nothing. 
         }
-        console.log(version);
+        
         packages[gameVer.version].versions.push({
           package_id: this.id,
           game_version_id: gameVer.id,

@@ -53,14 +53,12 @@ class TechnicPlatform extends Platform {
 
   async process(data) {
     const { ignoredPackages = [ 'vanilla' ] } = this;
-console.log(data);
     let packages = { };
 
     if (!data) return {
       packages,
       meta: {}
     };
-console.log('here');
     for (const originalPack of data) {
       console.log(originalPack);
 
@@ -93,6 +91,13 @@ console.log('here');
 
         const gameVer = await ::this.findGameVersion(this, versionData.minecraft);
         if (!gameVer) continue;
+        
+        try {
+          const pkgEntry = this.packages[originalPack.name].versions.find(ep => `${ep.version}` === `${version.id}`);
+          if (pkgEntry && pkgEntry.origin) continue;
+        } catch (err) {
+          // Do nothing. 
+        }
 
         packages[originalPack.name].versions.push({
           package_id: this.id,

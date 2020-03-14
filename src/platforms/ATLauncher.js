@@ -60,9 +60,14 @@ class ATLauncherPlatform extends Platform {
         const pack = await ::this.getPackVersion(originalPack.safeName, version.version, version.__LINK);
         if (!pack || !pack.serverZipURL) continue;
 
-console.log(pack.serverZipURL);
+        try {
+          const pkgEntry = this.packages[originalPack.slug].versions.find(ep => `${ep.version}` === `${version.id}`);
+          if (pkgEntry && pkgEntry.origin) continue;
+        } catch (err) {
+          // Do nothing. 
+        }
 
-        packages[originalPack.safeName].versions.push({
+        packages[originalPack.slug].versions.push({
           package_id: this.id,
           game_version_id: gameVer.id,
 
@@ -84,8 +89,13 @@ console.log(pack.serverZipURL);
       this.log(`${diff} package(s) skipped due to lack of buildable versions.`);
     }
 
+    for (const pkgId in packages) {
+      if (finalPkgs.includes(pkgId)) continue;
+      delete packages[pkgId];
+    }
+
     return {
-      packages: finalPkgs,
+      packages,
       meta: {}
     };
   }

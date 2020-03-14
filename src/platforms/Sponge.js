@@ -35,6 +35,13 @@ class SpongePlatform extends Platform {
           source_ref: groups.mcVer
         }
       }
+        
+      try {
+        const pkgEntry = this.packages[groups.mcVer].versions.find(ep => `${ep.version}` === `${version.id}`);
+        if (pkgEntry && pkgEntry.origin) continue;
+      } catch (err) {
+        // Do nothing. 
+      }
 
       packages[groups.mcVer].versions.push({
         package_id: this.id,

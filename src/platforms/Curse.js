@@ -149,6 +149,13 @@ class CursePlatform extends Platform {
           origin: file.serverDownload,
           created_at: file.created_at
         };
+        
+        try {
+          const pkgEntry = this.packages[originalPack.slug].versions.find(ep => `${ep.version}` === `${version.id}`);
+          if (pkgEntry && pkgEntry.origin) continue;
+        } catch (err) {
+          // Do nothing. 
+        }
 
         packages[originalPack.slug].versions.push(pkg);
       }

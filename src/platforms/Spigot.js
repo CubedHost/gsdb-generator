@@ -117,6 +117,13 @@ class SpigotPlatform extends Platform {
             source_ref: version.minecraftVersion
           };
         }
+        
+        try {
+          const pkgEntry = this.packages[gameVer.id].versions.find(ep => `${ep.version}` === `${version.id}`);
+          if (pkgEntry && pkgEntry.origin) continue;
+        } catch (err) {
+          // Do nothing. 
+        }
 
         packages[gameVer.id].versions.push({
           package_id: this.id,

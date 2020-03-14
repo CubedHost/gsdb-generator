@@ -33,7 +33,7 @@ export default class PocketMinePlatform extends JenkinsPlatform {
       if (!packages[gameVersion.version]) {
         packages[gameVersion.version] = {
           versions: [],
-          name: `${this.name} ${gameVersion.version}`,
+          name: `${this.name} for Bedrock ${gameVersion.version}`,
           slug: gameVersion.version,
           source_ref: gameVersion.version
         };

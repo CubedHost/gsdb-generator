@@ -50,6 +50,14 @@ class MinecraftBedrockPlatform extends Platform {
 
     const gameVer = await ::this.findGameVersion(this, regexParser.groups.version);
 
+    // @TODO: Be a tad bit more graceful.
+    try {
+      const pkgEntry = this.packages[gameVer.id].versions.find(ep => `${ep.version}` === `${version.id}`);
+      if (pkgEntry && pkgEntry.origin) return { packages: [], meta: {} };
+    } catch (err) {
+      // Do nothing. 
+    }
+
     return {
       packages: {
         'alpha': {
@@ -68,7 +76,6 @@ class MinecraftBedrockPlatform extends Platform {
       meta: {}
     }
   }
-
 }
 
 export default MinecraftBedrockPlatform;

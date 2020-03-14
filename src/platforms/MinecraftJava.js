@@ -88,9 +88,8 @@ class MinecraftJava extends Platform {
         game_version_id: gameVersion.id,
         origin: versionData.url,
         created_at: new Date(version.releaseTime),
-        updated_at: new Date(version.releaseTime),
+        updated_at: new Date(),
       };
-
 
       if (versionData.downloads && versionData.downloads.server) {
         versionObj.origin = versionData.downloads.server.url;
