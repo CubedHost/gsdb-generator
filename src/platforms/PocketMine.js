@@ -19,7 +19,7 @@ export default class PocketMinePlatform extends JenkinsPlatform {
 
     for (const buildId in builds) {
       const build = builds[buildId];
-      const pkgEntry = this.packages.find(ep => ep.source_id === this.id && `${ep.version}` === `${build.number}`);
+      const pkgEntry = this.packages.find(ep => `${ep.version}` === `${build.number}`);
 
       if (pkgEntry) {
         continue;

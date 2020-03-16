@@ -69,7 +69,7 @@ class PaperPlatform extends JenkinsPlatform {
         }
 
         try {
-          const pkgEntry = this.packages[gameVer.version].versions.find(ep => `${ep.version}` === `${version.id}`);
+          const pkgEntry = this.packages[gameVer.version].versions.find(ep => `${ep.version}` === `${version.number}`);
           if (pkgEntry && pkgEntry.origin) continue;
         } catch (err) {
           // Do nothing. 
