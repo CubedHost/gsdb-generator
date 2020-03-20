@@ -29,7 +29,7 @@ export default class JenkinsPomPlatform extends Jenkins {
         const mainArtifact = moduleRecords.find(a => a.mainArtifact.artifactId === this.artifactId).mainArtifact;
         if (!mainArtifact) continue;
   
-        this.builds[build.id].mainArtifact = mainArtifact;
+        this.builds[build.number].mainArtifact = mainArtifact;
 
         // check if artifact list is empty before filtering
         if (!mainArtifact || mainArtifact.length === 0) {
@@ -60,8 +60,8 @@ export default class JenkinsPomPlatform extends Jenkins {
       const gameVer = await ::this.findGameVersion(this, artifactVer.groups.version);
       if (!gameVer) return;
 
-      if (typeof packages[gameVer.id] === 'undefined') {
-        packages[gameVer.id] = {
+      if (typeof packages[gameVer.version] === 'undefined') {
+        packages[gameVer.version] = {
           versions: [],
           name: `${this.name} ${gameVer.version}`,
           source_ref: gameVer.version,
@@ -70,20 +70,20 @@ export default class JenkinsPomPlatform extends Jenkins {
       }
 
       try {
-        const pkgEntry = this.packages[gameVer.id].versions.find(ep => `${ep.version}` === `${build.number}`);
+        const pkgEntry = this.packages.find(p => `${p.slug}` === `${gameVer.version}`).versions.find(ep => `${ep.version}` === `${build.number}`);
         if (pkgEntry && pkgEntry.origin) continue;
       } catch (err) {
         // Do nothing. 
       }
 
-      packages[gameVer.id].versions.push({
+      packages[gameVer.version].versions.push({
         package_id: this.id,
         game_version_id: gameVer.id,
 
         name: `${gameVer.version} #${build.number}`,
         version: build.number,
 
-        origin: `${this.url}/${build.id}/artifact/${build.jar}`,
+        origin: `${this.url}/${build.number}/artifact/${build.jar}`,
         created_at: new Date(build.timestamp)
       });
     }

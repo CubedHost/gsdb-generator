@@ -19,11 +19,6 @@ export default class PocketMinePlatform extends JenkinsPlatform {
 
     for (const buildId in builds) {
       const build = builds[buildId];
-      const pkgEntry = this.packages.find(ep => `${ep.version}` === `${build.number}`);
-
-      if (pkgEntry) {
-        continue;
-      }
 
       build.info = await ::this.fetchBuildInfo(build);
       let pharName = build.info.phar_name || 'PocketMine-MP.phar';
@@ -37,6 +32,13 @@ export default class PocketMinePlatform extends JenkinsPlatform {
           slug: gameVersion.version,
           source_ref: gameVersion.version
         };
+      }
+
+      try {
+        const pkgEntry = this.packages.find(p => `${p.slug}` === `${gameVersion.version}`).versions.find(ep => `${ep.version}` === `${build.number}`);
+        if (pkgEntry && pkgEntry.origin) continue;
+      } catch (err) {
+        // Do nothing. 
       }
 
       packages[gameVersion.version].versions.push({

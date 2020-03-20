@@ -18,8 +18,8 @@ export default class JenkinsPlatform extends Platform {
 
       for (const build of builds) {
         this.builds[build.number] = {
-          id: build.number,
           name: `#${build.number}`,
+          version: build.number,
           ...build,
           created_at: new Date(build.timestamp)
         };
@@ -73,7 +73,7 @@ export default class JenkinsPlatform extends Platform {
       for (const info of builds) {
         if (!info.jar) return;
 
-        pkg.versions[info.id] = {
+        pkg.versions[minecraftVersion] = {
           version: info.number,
           origin: `${info.url}/artifact/${info.artifacts[0].relativePath}`
         };

@@ -60,14 +60,10 @@ class ATLauncherPlatform extends Platform {
         const pack = await ::this.getPackVersion(originalPack.safeName, version.version, version.__LINK);
         if (!pack || !pack.serverZipURL) continue;
 
-        try {
-          const pkgEntry = this.packages[originalPack.slug].versions.find(ep => `${ep.version}` === `${version.id}`);
-          if (pkgEntry && pkgEntry.origin) continue;
-        } catch (err) {
-          // Do nothing. 
-        }
+        const pkgEntry = this.packages.find(p => p.slug === safeName).versions.find(ep => `${ep.version}` === `${version.id}`);
+        if (pkgEntry && pkgEntry.origin) continue;
 
-        packages[originalPack.slug].versions.push({
+        packages[safeName].versions.push({
           package_id: this.id,
           game_version_id: gameVer.id,
 

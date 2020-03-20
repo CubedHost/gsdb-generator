@@ -16,7 +16,6 @@ class Generator {
   sources = [ ];
   oldPackageThreshold = 604800;
 
-
   constructor() {
     const { aws } = global.config;
 

@@ -37,13 +37,13 @@ class PaperPlatform extends JenkinsPlatform {
         if (!gameVer) continue;
 
         res.push({
-          id: build.number,
           name: `#${build.number}`,
+          version: build.number,
           gameVersion: gameVer,
           ...build,
           job,
           origin: `${build.url}artifact/${build.artifacts[0].fileName}`,
-          created_at: build.created_at
+          created_at: new Date(build.created_at)
         });
       }
     }
@@ -59,8 +59,8 @@ class PaperPlatform extends JenkinsPlatform {
 
       try {
         const gameVer = version.gameVersion;
-        if (typeof packages[gameVer.version] === 'undefined') {
-          packages[gameVer.version] = {
+        if (typeof packages[gameVer.id] === 'undefined') {
+          packages[gameVer.id] = {
             versions: [],
             name: `${this.name} ${gameVer.version}`,
             slug: gameVer.version,
@@ -69,13 +69,14 @@ class PaperPlatform extends JenkinsPlatform {
         }
 
         try {
-          const pkgEntry = this.packages[gameVer.version].versions.find(ep => `${ep.version}` === `${version.number}`);
+          const pkgEntry = this.packages.find(pkg => pkg.slug === gameVer.version).versions.find(ep => `${ep.version}` === `${version.number}`);
           if (pkgEntry && pkgEntry.origin) continue;
         } catch (err) {
+          console.log(err);
           // Do nothing. 
         }
         
-        packages[gameVer.version].versions.push({
+        packages[gameVer.id].versions.push({
           package_id: this.id,
           game_version_id: gameVer.id,
 

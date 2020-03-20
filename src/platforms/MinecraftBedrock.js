@@ -52,7 +52,7 @@ class MinecraftBedrockPlatform extends Platform {
 
     // @TODO: Be a tad bit more graceful.
     try {
-      const pkgEntry = this.packages[gameVer.id].versions.find(ep => `${ep.version}` === `${version.id}`);
+      const pkgEntry = this.packages.find(p => `${p.slug}` === `${gameVer.version}`).versions.find(ep => `${ep.version}` === `${version.id}`);
       if (pkgEntry && pkgEntry.origin) return { packages: [], meta: {} };
     } catch (err) {
       // Do nothing. 

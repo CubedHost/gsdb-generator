@@ -27,6 +27,7 @@
     "requireindex": "^1.2.0",
     "sns.js": "^1.0.2",
     "sqs-producer": "github:jhead/sqs-producer",
+    "uuid": "^7.0.2",
     "xml2js": "^0.4.10"
   },
   "devDependencies": {
