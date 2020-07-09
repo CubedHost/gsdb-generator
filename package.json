@@ -41,6 +41,22 @@
     "lint": "echo 'Linting...' && ./node_modules/.bin/eslint . && echo 'Success!'",
     "depcheck": "echo 'Checking dependencies...' && DEP=$(./node_modules/.bin/depcheck --ignores=depcheck,babel-core,babel-register); echo \"$DEP\"; [ \"$DEP\" == 'No depcheck issue' ]"
   },
+  "babel": {
+      "presets": [
+        ["@babel/preset-env", {
+          "targets": {
+            "node": "current"
+          }
+        }]
+      ],
+      "plugins": [
+        "@babel/plugin-proposal-function-bind",
+        [
+          "@babel/plugin-proposal-class-properties",
+          {"loose": true}
+        ]
+      ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/CubedHost/GSDB-Generator.git"

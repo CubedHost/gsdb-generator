@@ -54,7 +54,8 @@ export default class JenkinsPomPlatform extends Jenkins {
     for (const buildId in builds) {
       const build = builds[buildId];
 
-      const artifactVer = build.mainArtifact.version.match(/^(?<version>[0-9\.]+)\-SNAPSHOT/i);
+      const artifactVer = build.mainArtifact.version.match(/^(?<version>[0-9\.]+)\-(R[0-9\.]+-)?SNAPSHOT/i);
+      
       if (!artifactVer || !artifactVer.groups) continue;
 
       const gameVer = await ::this.findGameVersion(this, artifactVer.groups.version);
