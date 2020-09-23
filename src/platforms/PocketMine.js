@@ -4,13 +4,13 @@ export default class PocketMinePlatform extends JenkinsPlatform {
   pharRegex = /PocketMine-MP[.*]+\.phar/i;
 
   async fetchBuildInfo(build) {
-    const cached = await ::this.getFromCache(`build_${build.id}`);
+    const cached = await ::this.getFromCache(`build_${build.version}`);
     if (cached) {
       return cached;
     }
 
     const buildInfo = await this.request(`${build.url}artifact/build_info.json`);
-    await ::this.putCache(`build_${build.id}`, buildInfo);
+    await ::this.putCache(`build_${build.version}`, buildInfo);
     return buildInfo;
   }
 
