@@ -1,56 +1,39 @@
-import JenkinsPlatform from './Jenkins';
+import MinecraftJava from './MinecraftJava';
 
 const PAPER_JAR_REGEX = /paper\-(?<version>[0-9\.+]+)\.jar/i;
 
-class PaperPlatform extends JenkinsPlatform {
-  jobs = [];
-  tree = 'jobs[name,url,builds[timestamp,actions[moduleRecords[mainArtifact[artifactId,canonicalName,fileName,version]]],number,result,url,artifacts[fileName,displayPath,relativePath],mavenArtifacts[moduleRecords[mainArtifact[fileName,version]]]],firstBuild]';
+class PaperPlatform extends MinecraftJava {
 
-  get module() {
-    if (this.build < 444) return 'org.github.paperspigot$paperspigot';
-    return 'com.destroystokyo.paper$paper';
-  }
-
-  get artifactId() {
-    return 'paper';
-  }
-
-  async iterateBuildHistory(projectInfo) {
-    const jobs = projectInfo.jobs.filter(j => /^Paper(\-[0-9\.]+)?$/.test(j.name));
+  async fetch() {
     const res = [];
 
-    for (const job of jobs) {
-      for (const build of job.builds) {
-        let paperArtifact = (build.mavenArtifacts || { moduleRecords: [] })
-          .moduleRecords
-          .filter(o => o.result !== 'SUCCESS')
-          .filter(o => PAPER_JAR_REGEX.test(o.mainArtifact.fileName))
-          .map(o => o.mainArtifact);
+    for (const verGroup of (await this.request()).version_groups) {
+      const vgBuilds = await this.request(`${this.url}/version_group/${verGroup}/builds`);
 
-        if (paperArtifact.length === 0 || build.artifacts.length === 0) {
-          this.log(`Unable to find version for ${job.name} build #${build.number}, skipping.`);
-          continue;
+      for (const build of vgBuilds.builds) {
+        try {
+
+          const gameVer = await ::this.findGameVersion(this, build.version);
+          if (!gameVer) continue;
+  
+          res.push({
+            id: build.build,
+            name: `#${build.build}`,
+            version: build.build,
+            gameVersion: gameVer,
+            verGroup,
+            origin: `${this.url}/versions/${build.version}/builds/${build.build}/downloads/${build.downloads.application.name}`,
+            created_at: build.time
+          });
+        } catch (err) {
+          this.log(`Failed to prepare ${build.version} #${build.build}: ${err}`);
         }
-
-        const verMatch = paperArtifact[0].fileName.match(PAPER_JAR_REGEX);
-        const gameVer = await ::this.findGameVersion(this, verMatch.groups.version);
-        if (!gameVer) continue;
-
-        res.push({
-          name: `#${build.number}`,
-          version: build.number,
-          gameVersion: gameVer,
-          ...build,
-          job,
-          origin: `${build.url}artifact/${build.artifacts[0].fileName}`,
-          created_at: new Date(build.created_at)
-        });
       }
     }
 
     return res;
   }
-
+  
   async process(data) {
     let packages = { };
 
@@ -64,29 +47,29 @@ class PaperPlatform extends JenkinsPlatform {
             versions: [],
             name: `${this.name} ${gameVer.version}`,
             slug: gameVer.version,
-            source_ref: version.job.name
+            source_ref: `Paper-${version.verGroup}`
           };
         }
 
         try {
-          const pkgEntry = this.packages.find(pkg => pkg.slug === gameVer.version).versions.find(ep => `${ep.version}` === `${version.number}`);
+          const pkgEntry = this.packages.find(pkg => pkg.slug === gameVer.version).versions.find(ep => `${ep.version}` === `${version.id}`);
           if (pkgEntry && pkgEntry.origin) continue;
+
+          packages[gameVer.id].versions.push({
+            package_id: this.id,
+            game_version_id: gameVer.id,
+  
+            name: `${gameVer.version} #${version.id}`,
+            version: version.id,
+  
+            origin: version.origin,
+            created_at: version.created_at,
+            updated_at: version.updated_at
+          });
         } catch (err) {
-          console.log(err);
-          // Do nothing. 
+          console.log(gameVer, err);
+          // Do nothing.
         }
-        
-        packages[gameVer.id].versions.push({
-          package_id: this.id,
-          game_version_id: gameVer.id,
-
-          name: `${gameVer.version} #${version.number}`,
-          version: version.number,
-
-          origin: version.origin,
-          created_at: version.created_at,
-          updated_at: version.updated_at
-        });
       } catch (err) {
         this.log(err.message, this.options, version.minecraftVersion);
         throw err;

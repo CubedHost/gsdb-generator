@@ -50,6 +50,10 @@ class Platform {
   }
 
   async findGameVersion(source, version) {
+    if (typeof this._cache[`${source.id}_${version}`] !== 'undefined') {
+      return this._cache[`${source.id}_${version}`];
+    }
+
     let gameVersion = await GameVersion.query()
       .where({
         game_id: source.game.id,
@@ -65,14 +69,15 @@ class Platform {
       });
     }
 
+    this._cache[`${source.id}_${version}`] = gameVersion;
+
     return gameVersion;
   }
 
   async fetch() {
     this.log('Fetching resources');
     try {
-      const pkgs = mergePackages([ await ::this.fetchRemote(), await ::this.fetchLocal() ]);
-      return pkgs;
+      return mergePackages([ await ::this.fetchRemote(), await ::this.fetchLocal() ]);
     } catch (err) {
       this.log(err);
     }

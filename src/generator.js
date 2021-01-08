@@ -7,7 +7,6 @@ import Database from './utils/Database';
 import SourceModel from './models/Source';
 import Package from './models/Package';
 import Platforms from './platforms';
-import { runInThisContext } from 'vm';
 import PackageVersion from './models/PackageVersion';
 
 const log = debug('gen');
