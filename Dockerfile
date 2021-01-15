@@ -1,12 +1,13 @@
-FROM node:10-alpine
+FROM node:10
 
 WORKDIR /data
 
-RUN apk add --no-cache unzip git curl
+RUN apt-get update && apt-get -y install unzip git curl \
+    && rm -rf /var/lib/apt/lists/*
 
 ADD . .
 
-RUN npm install .
+RUN yarn
 
 RUN curl -O https://s3.amazonaws.com/cubedhost-prisma/misc/gsdb-data.zip \
     && unzip -qo gsdb-data.zip \

@@ -47,19 +47,19 @@ class PaperPlatform extends MinecraftJava {
             versions: [],
             name: `${this.name} ${gameVer.version}`,
             slug: gameVer.version,
-            source_ref: `Paper-${version.verGroup}`
+            source_ref: gameVer.version
           };
         }
 
         try {
-          const pkgEntry = this.packages.find(pkg => pkg.slug === gameVer.version).versions.find(ep => `${ep.version}` === `${version.id}`);
+          const pkgEntry = this.packages.find(pkg => pkg.slug === gameVer.version)?.versions.find(ep => `${ep.version}` === `${version.id}`);
           if (pkgEntry && pkgEntry.origin) continue;
 
           packages[gameVer.id].versions.push({
             package_id: this.id,
             game_version_id: gameVer.id,
   
-            name: `${gameVer.version} #${version.id}`,
+            name: `#${version.id}`,
             version: version.id,
   
             origin: version.origin,
