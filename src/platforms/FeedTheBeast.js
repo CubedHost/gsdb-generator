@@ -36,7 +36,7 @@ class FeedTheBeastPlatform extends Platform {
         .replace(/[-]{2}/g, '-')
         .toLowerCase();
 
-      id = (id.substr(0, 4) !== 'ftb-' ? 'ftb-' + id.replace(/ftb-/g, '') : id);
+      id = id.replace(/^ftb-/i, '');
 
       if (typeof packages[pack.id] === 'undefined') {
         packages[pack.id] = {
