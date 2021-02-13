@@ -24,7 +24,7 @@ class FeedTheBeastPlatform extends Platform {
       const pack = await ::this.request(`${packId}`);
 
       var id = pack.name
-        .replace(/(FTB Presents|FTB|ftb_)/g, 'ftb-')
+        .replace(/(FTB Presents|FTB|ftb_)/ig, '')
         .replace(/([a-z])_([A-Z])/g, '$1-$2')
         .replace(/_(\d+)_(\d+)_(\d+)$/g, '-$1.$2.$3')
         .replace(/_(\d+)_(\d+)$/g, '-$1.$2')
@@ -33,10 +33,8 @@ class FeedTheBeastPlatform extends Platform {
         .replace(/([a-z])_(\d+)/g, '$1$2')
         .replace(/['"]/g, '')
         .replace(/[ ]+/g, '-')
-        .replace(/[-]{2}/g, '-')
+        .replace(/[-]{2,}/g, '-')
         .toLowerCase();
-
-      id = id.replace(/^ftb-/i, '');
 
       if (typeof packages[pack.id] === 'undefined') {
         packages[pack.id] = {
